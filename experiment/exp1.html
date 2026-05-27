@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Result Tool</title>
+  <link rel="stylesheet" href="exp1.css">
+
+</head>
+<body>
+ <div class="top-header">ASHMIT KATIYAR 2503201000327</div>
+
+  <main class="container">
+    <h2>Student Result Calculator</h2>
+
+    <div class="form-group">
+      <label for="subjectCount">Number of Subjects</label>
+      <input
+
+      
+        type="number" 
+        name="subjectCount"
+        id="subjects" min="1" max="10"
+      >
+    </div>
+
+    <button type="button" onclick="calculateResults()">
+      Show Result
+    </button>
+
+    <section id="results" aria-live="polite"></section>
+  </main>
+
+  <script src="exp1.js"></script>
+</body>
+</html>
