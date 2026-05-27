@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Salary Management System</title>
+</head>
+
+<body style="
+font-family:Arial;
+background:#eef3f6;
+display:flex;
+justify-content:center;
+">
+
+<div style="
+width:380px;
+margin-top:60px;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0px 4px 10px rgba(0,0,0,0.2);
+">
+
+<h2 style="text-align:center;">
+Employee Salary Management System
+</h2>
+
+<input type="text" id="name"
+placeholder="Employee Name"
+style="
+width:250px;
+padding:8px;
+border-radius:5px;
+border:1px solid saddlebrown;
+margin-top:12px;
+">
+
+<input type="text" id="id"
+placeholder="Employee ID"
+style="
+width:250px;
+padding:8px;
+border-radius:5px;
+border:1px solid saddlebrown;
+margin-top:12px;
+">
+
+<input type="number" id="salary"
+placeholder="Employee Salary"
+style="
+width:250px;
+padding:8px;
+border-radius:5px;
+border:1px solid saddlebrown;
+margin-top:12px;
+">
+
+<input type="text" id="department"
+placeholder="Department"
+style="
+width:250px;
+padding:8px;
+border-radius:5px;
+border:1px solid saddlebrown;
+margin-top:12px;
+">
+
+<br><br>
+
+<button onclick="addEmployee()" style="
+background:#2f80ed;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:6px;
+cursor:pointer;
+">
+Add Employee
+</button>
+
+<br>
+
+<div style="margin-top:12px;">
+
+<button onclick="displayEmployees()" style="
+margin-top:12px;
+background:#2f80ed;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:6px;
+cursor:pointer;
+">
+Display All
+</button>
+
+<button onclick="filterSalary()" style="
+margin-top:12px;
+background:#2f80ed;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:6px;
+cursor:pointer;
+">
+Filter Salary > 50000
+</button>
+
+<button onclick="totalSalary()" style="
+margin-top:12px;
+background:#2f80ed;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:6px;
+cursor:pointer;
+">
+Total Salary
+</button>
+
+<button onclick="clearData()" style="
+margin-top:12px;
+background:red;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:6px;
+cursor:pointer;
+">
+Clear
+</button>
+
+</div>
+
+<br>
+
+<div id="output" style="
+margin-top:15px;
+background:#f4f4f4;
+padding:10px;
+border-radius:8px;
+min-height:80px;
+">
+Employee details will appear here
+</div>
+
+</div>
+
+<script>
+
+let employees = [];
+
+function addEmployee(){
+
+    let name = document.getElementById("name").value;
+    let id = document.getElementById("id").value;
+    let salary = parseInt(document.getElementById("salary").value);
+    let department = document.getElementById("department").value;
+
+    if(name=="" || id=="" || department=="" || isNaN(salary)){
+
+        alert("Please fill all fields");
+        return;
+    }
+
+    let employee = {
+        name:name,
+        id:id,
+        salary:salary,
+        department:department
+    };
+
+    employees.push(employee);
+
+    alert("Employee Added Successfully");
+
+    document.getElementById("name").value = "";
+    document.getElementById("id").value = "";
+    document.getElementById("salary").value = "";
+    document.getElementById("department").value = "";
+}
+
+function displayEmployees(){
+
+    let text = "";
+
+    for(let emp of employees){
+
+        text +=
+        "<b>Name:</b> " + emp.name + "<br>" +
+        "<b>ID:</b> " + emp.id + "<br>" +
+        "<b>Salary:</b> ₹" + emp.salary + "<br>" +
+        "<b>Department:</b> " + emp.department +
+        "<hr>";
+    }
+
+    if(text==""){
+        text = "No Employees Added";
+    }
+
+    document.getElementById("output").innerHTML = text;
+}
+
+function filterSalary(){
+
+    let text = "";
+
+    for(let emp of employees){
+
+        if(emp.salary > 50000){
+
+            text +=
+            "<b>Name:</b> " + emp.name + "<br>" +
+            "<b>Salary:</b> ₹" + emp.salary +
+            "<hr>";
+        }
+    }
+
+    if(text==""){
+        text = "No Employee Found";
+    }
+
+    document.getElementById("output").innerHTML = text;
+}
+
+function totalSalary(){
+
+    let total = 0;
+
+    for(let emp of employees){
+
+        total += emp.salary;
+    }
+
+    document.getElementById("output").innerHTML =
+    "<h3>Total Salary = ₹" + total + "</h3>";
+}
+
+function clearData(){
+
+    employees = [];
+
+    document.getElementById("output").innerHTML =
+    "All Employee Data Cleared";
+}
+
+</script>
+
+</body>
+</html>

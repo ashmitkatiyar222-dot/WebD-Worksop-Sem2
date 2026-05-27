@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Result Calculator</title>
+</head>
+
+<body style="font-family:Arial; background:#eef3f6;">
+
+<center>
+
+<div style="
+width:350px;
+margin-top:80px;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0px 4px 10px rgba(0,0,0,0.2);
+">
+
+<h2>Student Result Calculator</h2>
+
+<p>Enter Number of Subjects</p>
+
+<input type="number" id="subjects" placeholder="3"
+style="
+width:250px;
+padding:8px;
+border-radius:5px;
+border:1px solid #ccc;
+">
+
+<br><br>
+
+<button onclick="calculateResult()" style="
+background:#2f80ed;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:6px;
+cursor:pointer;
+">
+Calculate Result
+</button>
+
+<br><br>
+
+<p><b>Total Marks:</b> <span id="total"></span></p>
+<p><b>Average Marks:</b> <span id="average"></span></p>
+<p><b>Grade:</b> <span id="grade"></span></p>
+<p><b>Result:</b> <span id="result"></span></p>
+
+</div>
+
+</center>
+
+<script>
+
+function calculateResult() {
+
+    let n = document.getElementById("subjects").value;
+
+    if(n <= 0){
+        alert("Enter valid number of subjects");
+        return;
+    }
+
+    let total = 0;
+
+    for(let i = 1; i <= n; i++){
+
+        let marks = parseInt(prompt("Enter marks for Subject " + i));
+
+        if(isNaN(marks) || marks < 0 || marks > 100){
+            alert("Enter valid marks between 0 and 100");
+            return;
+        }
+
+        total += marks;
+    }
+
+    let average = total / n;
+
+    let grade = "";
+    let result = "";
+
+    if(average >= 90){
+        grade = "A+";
+    }
+    else if(average >= 75){
+        grade = "A";
+    }
+    else if(average >= 60){
+        grade = "B";
+    }
+    else if(average >= 40){
+        grade = "C";
+    }
+    else{
+        grade = "F";
+    }
+
+    if(average >= 40){
+        result = "Pass";
+    }
+    else{
+        result = "Fail";
+    }
+
+    document.getElementById("total").innerHTML = total;
+    document.getElementById("average").innerHTML = average.toFixed(2);
+    document.getElementById("grade").innerHTML = grade;
+    document.getElementById("result").innerHTML = result;
+}
+
+</script>
+
+</body>
+</html>
