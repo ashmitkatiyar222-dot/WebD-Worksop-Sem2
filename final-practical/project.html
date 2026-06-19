@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>odd-even checker</title>
+    <style>
+        .body{
+             display: flex;
+       justify-content: center;
+       align-items: center;
+      background: #f4f4f4;
+            
+        }
+        input {
+  width: 90%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+    </style>
+</head>
+<body>
+
+    <!DOCTYPE html>
+<html>
+<head>
+  <title>Even Odd Checker</title>
+</head>
+
+<body>
+
+  <h3>Even / Odd Checker</h3>
+
+  <input id="num" type="number" placeholder="Enter a number">
+  <button onclick="check()">Check</button>
+
+  <p id="result"></p>
+
+  <script>
+    function check() {
+      let n = document.getElementById("num").value;
+      let res = document.getElementById("result");
+
+      if (n === "") {
+        res.textContent = "Please enter a number";
+      }
+      else {
+        n = Number(n);
+
+        if (n % 2 === 0) {
+          res.textContent = "Even Number";
+        }
+        else {
+          res.textContent = "Odd Number";
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
+</body>
+</html>
